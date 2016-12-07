@@ -1,0 +1,11 @@
+<h1>Doctors:</h1>
+
+<ul>
+  <% @doctors.each do |doctor| %>
+    <li><a href="/doctor/<%= doctor.id %>/patients"><%= doctor.name %>, <%= doctor.specialty %></a></li>
+  <% end %>
+</ul>
+
+
+
+<a href="/doctor/intake/new"><button type="button" class="btn btn-default">Add Doctor</button></a>

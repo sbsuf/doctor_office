@@ -20,9 +20,9 @@ class Doctor
     returned_doc = DB.exec("SELECT * FROM doctor;")
     doctors = []
     returned_doc.each do |doctor|
-      name = doctor.fetch('name')
-      specialty = doctor.fetch('specialty')
-      id = doctor.fetch('id').to_i
+      name = doctor['name']
+      specialty = doctor['specialty']
+      id = doctor['id'].to_i
       doctors.push(Doctor.new({name: name, specialty: specialty, id: id}))
     end
     doctors
@@ -33,7 +33,13 @@ class Doctor
     @id = result.first.fetch('id').to_i
   end
 
+  def self.find(id)
+    found_doc = nil
+    Doctor.all.each { |doctor| doctor.id == id ? found_doc = doctor : false }
+    found_doc
+  end
+
   def ==(second)
-    self.name == second.name && self.specialty == second.specialty && self.id == second.id
+    self.name == second.name && self.specialty == second.specialty
   end
 end

@@ -48,4 +48,11 @@ describe 'Doctor' do
       expect(doc.patient_list).to eq([patient])
     end
   end
+  describe '.find' do
+    it("finds doc by id and returns doctor") do
+      doc1 = Doctor.new({name: 'Dr. Bob', specialty: 'Internal Medicine', id: nil})
+      doc1.save
+      expect(Doctor.find(doc1.id)).to eq(doc1)
+    end
+  end
 end

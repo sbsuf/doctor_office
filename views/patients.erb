@@ -1,0 +1,9 @@
+<h1><%= @doctor.name %></h1>
+
+<h3>Patients:</h3>
+
+<ul>
+  <% @doctor.patient_list do |patient| %>
+      <li>Name: <%= patient.name %>, Birthday: <%= patient.birthday %></li>
+    <% end %>
+</ul>
